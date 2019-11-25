@@ -29,7 +29,7 @@
   position: absolute;
   width: 40px;
   height: 40px;
-  top: 2em;
+  top: 1.5em;
   right: 2em;
   @include easeOut;
 
@@ -51,7 +51,6 @@
       height: 2px;
       margin-top: 5px;
       margin-bottom: 5px;
-      background: $bg-sec-color;
       @include easeOut;
     }
 
@@ -79,6 +78,12 @@
     }
   }
 
+  .black > div {
+    background-color: #333;
+  }
+  .yellow > div {
+    background: $bg-sec-color;
+  }
 .landing-section {
   position: relative;
   top: 35vh;
@@ -181,6 +186,8 @@ padding: 1em;
     top: 35vh;
     user-select: none;
     background-color: red;
+    white-space: nowrap;
+    overflow:scroll;
 
     .slide {
       padding: 10px;
@@ -201,4 +208,8 @@ padding: 1em;
       }
     }
   }
+}
+
+::-webkit-scrollbar {
+    display: none;
 }

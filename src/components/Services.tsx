@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
+import Hamburger from "./Hamburger";
 import Nav from "./Nav";
 
 const Services: React.FC = () => {
-    const ref = useRef<HTMLDivElement | null>(null);
+    const divRef = useRef<HTMLDivElement>(null);
     const [state, setState] = useState({
         isDown: false,
         clientX: 0,
@@ -24,26 +25,26 @@ const Services: React.FC = () => {
     };
 
     const onMouseMove = (e: React.MouseEvent<HTMLDivElement>): void => {
-        e.persist();
+        e.preventDefault();
         if (!state.isDown) { return; }
         const { clientX, scrollX } = state;
-        if (ref.current) {
-            // console.log(ref.current.scrollLeft);
-            ref.current.scrollLeft = scrollX + e.clientX - clientX;
-            console.log(ref.current.scrollLeft, scrollX + e.clientX - clientX);
-            // state.scrollX = scrollX + e.clientX - clientX;
-            // state.clientX = e.clientX;
+        if (divRef.current) {
+            divRef.current.scrollLeft = scrollX - clientX + e.clientX;
+            setState({ ...state, clientX: e.clientX, scrollX: scrollX + e.clientX - clientX });
+            console.log(divRef.current.scrollLeft);
      }
     };
     return (
         <main>
             <Nav/>
+            <Hamburger color="black"/>
             <div id="content">
-                <div className="draggable-slider" ref={ref}
+                <div className="draggable-slider" ref={divRef}
                     onMouseDown={onMouseDown}
                     onMouseUp={onMouseUp}
                     onMouseLeave={onMouseLeave}
-                    onMouseMove={onMouseMove}>
+                    onMouseMove={onMouseMove}
+                    >
                    <div className="slide">
                        <h3>.01</h3>
                        <h3>Basic</h3>
