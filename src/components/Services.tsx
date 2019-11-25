@@ -15,13 +15,22 @@ const Services: React.FC = () => {
             ...state, isDown: true,
             clientX: e.clientX,
         });
+        if (divRef.current) {
+            divRef.current.style.cursor = "grabbing";
+        }
     };
 
     const onMouseUp = () => {
         setState({ ...state, isDown: false });
+        if (divRef.current) {
+            divRef.current.style.cursor = "pointer";
+        }
     };
     const onMouseLeave = () => {
         setState({ ...state, isDown: false });
+        if (divRef.current) {
+            divRef.current.style.cursor = "pointer";
+        }
     };
 
     const onMouseMove = (e: React.MouseEvent<HTMLDivElement>): void => {
@@ -31,12 +40,11 @@ const Services: React.FC = () => {
         if (divRef.current) {
             divRef.current.scrollLeft = scrollX - clientX + e.clientX;
             setState({ ...state, clientX: e.clientX, scrollX: scrollX + e.clientX - clientX });
-            console.log(divRef.current.scrollLeft);
      }
     };
     return (
         <main>
-            <Nav/>
+            <Nav underline="services"/>
             <Hamburger color="black"/>
             <div id="content">
                 <div className="draggable-slider" ref={divRef}
@@ -64,6 +72,9 @@ const Services: React.FC = () => {
                         <h3>.04</h3>
                         <h3>Basic</h3>
                        <div className="slide-image">4</div>
+                   </div>
+                   <div className="slide">
+                        &nbsp;
                    </div>
                </div>
             </div>

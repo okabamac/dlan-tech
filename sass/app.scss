@@ -25,6 +25,7 @@
 }
 
 #hamburger-icon {
+  z-index: 1000;
   cursor: pointer;
   position: absolute;
   width: 40px;
@@ -152,7 +153,7 @@ nav {
   justify-content: left;
   font-weight: 600;
   width: 100vw;
-
+  z-index: 1000;
   .rec-txt-black {
   padding: 0.8em;
   background-color: $bg-main-color;
@@ -164,24 +165,51 @@ span#links {
   margin: 0.6em 0 0 35%;
 }
   a {
+    position: relative;
     display: inline-block;
     margin: 1em;
+    cursor: pointer;
     color: $bg-main-color;
     text-decoration: none;
     font-size: 16px;
   }
 }
+ #underline {
+       text-decoration: underline;
+    }
 
+.link {
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 0.1em; // roughly the current letter thickness
+        width: 100%;
+        background-color: #333;
+        transition: transform 400ms ease-out;
+    }
+
+    &::before {
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+
+    &:hover::before {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+}
 #content {
 position: relative;
-padding: 1em;
+padding: 1em 0em;
 
   .draggable-slider {
     position: relative;
     display: grid;
     padding: 1rem;
     width: 100%;
-    grid-template-columns: repeat(4, 400px);
+    grid-template-columns: repeat(7, 400px);
     grid-column-gap: 3em;
     top: 35vh;
     user-select: none;
