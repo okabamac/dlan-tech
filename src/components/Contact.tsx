@@ -1,13 +1,11 @@
-import React, { useRef, useState } from "react";
-import Hamburger from "./Hamburger";
+import React, { useState } from "react";
 import Nav from "./Nav";
 
 const Contact: React.FC = () => {
 
     return (
-        <main>
-            <Nav />
-            <Hamburger color="black"/>
+        <main style={{ backgroundColor: "#333" }}>
+            <Nav underline="contact" color="white" display={true}/>
             <div id="content">
             </div>
         </main>

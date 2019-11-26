@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import Hamburger from "./Hamburger";
 import Nav from "./Nav";
 
 const Services: React.FC = () => {
@@ -43,9 +42,8 @@ const Services: React.FC = () => {
      }
     };
     return (
-        <main>
-            <Nav underline="services"/>
-            <Hamburger color="black"/>
+        <main style={{ backgroundColor: "#ffdc25"}}>
+            <Nav underline="services" color="black" display={true} showServices={false}/>
             <div id="content">
                 <div className="draggable-slider" ref={divRef}
                     onMouseDown={onMouseDown}

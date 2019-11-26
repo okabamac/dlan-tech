@@ -1,10 +1,10 @@
 import React from "react";
-import Hamburger from "./Hamburger";
+import Nav from "./Nav";
 
 const Home: React.FC = () => {
     return (
         <header className="App-header">
-        <Hamburger color="yellow"/>
+        <Nav color="yellow" display={false} showServices={true}/>
         <section className="landing-section">
           <h3>dlan <span className="rec-txt-yellow">Technologies</span></h3>
           <div className="ruler"></div>
