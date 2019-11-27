@@ -156,60 +156,55 @@ main {
   color: $bg-sec-color;
 }
 
-nav {
+.nav-links {
   position: fixed;
-  padding-left: 1em;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: left;
-  font-weight: 600;
+  padding-top: 2em;
+  font-weight: 400;
   width: 100vw;
+  text-align: center;
   z-index: 1000;
 
-div#links {
-  position: absolute;
-  margin: 0.6em 0 0 35%;
-}
   a {
     position: relative;
-    display: inline-block;
+    display: inline;
     margin: 1em;
     cursor: pointer;
-    color: $bg-main-color;
+    color: inherit;
     text-decoration: none;
     font-size: 16px;
+    &:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 0%;
+    position: absolute;
+    background: #fff;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+    }
+    &:hover:after {
+    width: 100%;
+    }
+    &.current {
+      border-bottom: 2px solid #fff;
+    }
   }
 }
- #underline {
-       text-decoration: underline;
-    }
-
-.link {
-    &::before {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        height: 0.1em; // roughly the current letter thickness
-        width: 100%;
-        background-color: #333;
-        transition: transform 400ms ease-out;
-    }
-
-    &::before {
-        transform: scaleX(0);
-        transform-origin: right;
-    }
-
-    &:hover::before {
-        transform: scaleX(1);
-        transform-origin: left;
-    }
+.nav-active {
+  display: none;
 }
 #content {
 position: relative;
+top: 200px;
 padding: 1em 0em;
+
+h1 {
+  text-align: center;
+  color: #fff;
+  opacity: 0.6;
+}
 
   .draggable-slider {
     position: relative;
@@ -218,7 +213,7 @@ padding: 1em 0em;
     width: 100%;
     grid-template-columns: repeat(7, 400px);
     grid-column-gap: 3em;
-    top: 35vh;
+    top: 10vh;
     user-select: none;
     background-color: red;
     white-space: nowrap;
@@ -227,11 +222,6 @@ padding: 1em 0em;
     .slide {
       padding: 10px;
       line-height: 1;
-    //   cursor: grab;
-
-    // &.is-grabbing{
-    //   cursor: grabbing;
-    //    }
 
       h3 {
         margin: 2px;
@@ -249,13 +239,69 @@ padding: 1em 0em;
     display: none;
 }
 
+.form-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 3em;
+  padding: 5%;
+   form > * {
+    display: block;
+    width: 100%;
+    margin-bottom: 1.2em;
+    padding: 0.1em;
+    background-color: #333;
+    color: #fff;
+    letter-spacing: 1px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgb(189, 184, 184);
+  }
+  form input {
+    height: 30px;
+  }
+
+  form .send-btn {
+    border: none;
+    cursor: pointer;
+    padding: 1em;
+    color: #333;
+    border: 1px solid $bg-sec-color;
+    color: #fff;
+    background: {
+    image: linear-gradient(45deg,$bg-sec-color 50%, transparent 50%);
+    position: 100%;
+    size: 400%;
+  }
+  transition: background 400ms ease-in-out;
+
+  &:hover {
+    background-position: 0;
+    color: #333;
+  }
+  }
+
+  .contact-details {
+    color: #fff;
+    opacity: 0.6;
+    p {
+      margin-bottom: 1.2em;
+    }
+  }
+}
 @media only screen and (max-width: 768px) {
-  div#links {
-    // display: none;
-    top: 3em;
-    left: -240px;
+.nav-links {
+  padding-top: 4em;
+  text-align: left;
     a {
-      display: block
+      display: block;
+      float: left;
+      clear: left;
+      margin: 0.8em;
+
       }
+  }
+  .form-content {
+  grid-template-columns: 1fr;
+  grid-gap: 1em;
   }
 }
