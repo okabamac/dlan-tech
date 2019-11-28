@@ -217,7 +217,6 @@ h1 {
     grid-column-gap: 3em;
     top: 10vh;
     user-select: none;
-    background-color: red;
     white-space: nowrap;
     overflow:scroll;
 
@@ -229,9 +228,42 @@ h1 {
         margin: 2px;
       }
       .slide-image {
+        position: relative;
         width: 400px;
         height: 300px;
         background-color: #333;
+        &::after {
+          content : "";
+        position: absolute;
+        right    : -0.4em;
+        z-index: 100;
+        top  : 0;
+        width  : 3px;
+        height   : 50%;  /* or 100px */
+        background-color: #ffeaa7;
+        background-image: linear-gradient(315deg, #ffeaa7 0%, #413e3e 74%);
+        }
+         &::before {
+          content : "";
+        position: absolute;
+        left    : -0.5em;
+        z-index: 100;
+        top  : 50%;
+        width  : 3px;
+        height   : 50%;  /* or 100px */
+        background-color: #ffeaa7;
+        background-image: linear-gradient(315deg, #ffeaa7 0%, #413e3e 74%);
+        }
+        img {
+          width: 100%;
+          height: 100%;
+        }
+        .hover {
+          position: absolute;
+          background-color: red;
+          width: 100%;
+          height: 100%;
+        }
       }
     }
   }
@@ -261,6 +293,9 @@ h1 {
   form input {
     height: 40px;
     background-color: rgb(27,27,27);
+    &:focus {
+      background-color: rgb(27,27,27);
+    }
   }
  textarea {
    background-color: rgb(27,27,27);

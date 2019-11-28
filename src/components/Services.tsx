@@ -1,9 +1,18 @@
 import React, { useRef, useState } from "react";
+import hardware from "../images/hardware2.jpg";
+import sql from "../images/microsoft-sql-server.svg";
+import msOffice from "../images/microsoft365.jpg";
+import webDev from "../images/webdev2.jpeg";
 import Nav from "./Nav";
 
+interface ServiceState {
+    isDown: boolean;
+    clientX: number;
+    scrollX: number;
+}
 const Services: React.FC = () => {
     const divRef = useRef<HTMLDivElement>(null);
-    const [state, setState] = useState({
+    const [state, setState] = useState<ServiceState>({
         isDown: false,
         clientX: 0,
         scrollX: 0,
@@ -42,7 +51,7 @@ const Services: React.FC = () => {
      }
     };
     return (
-        <main style={{ backgroundColor: "#ffdc25"}}>
+        <main style={{ backgroundColor: "orange"}}>
             <Nav underline="services" color="black" display={true} showServices={false}/>
             <div id="content">
                 <div className="draggable-slider" ref={divRef}
@@ -51,26 +60,36 @@ const Services: React.FC = () => {
                     onMouseLeave={onMouseLeave}
                     onMouseMove={onMouseMove}
                     >
+
                    <div className="slide">
-                       <h3>.01</h3>
-                       <h3>Basic</h3>
-                       <div className="slide-image">1</div>
+                        <h3>.01</h3>
+                        <h3>Web Development</h3>
+                       <div className="slide-image">
+                           <div className="hover"></div>
+                            <img src={webDev} />
+                       </div>
                    </div>
                    <div className="slide">
                         <h3>.02</h3>
-                        <h3>Basic</h3>
-                       <div className="slide-image">2</div>
+                        <h3>Hardware and Networking</h3>
+                       <div className="slide-image">
+                            <img src={hardware} />
+                       </div>
                    </div>
                    <div className="slide">
                         <h3>.03</h3>
-                        <h3>Basic</h3>
-                       <div className="slide-image">3</div>
+                        <h3>MS SQL Server</h3>
+                       <div className="slide-image">
+                            <img src={sql} />
+                       </div>
                    </div>
-                   <div className="slide">
+                    <div className="slide">
                         <h3>.04</h3>
-                        <h3>Basic</h3>
-                       <div className="slide-image">4</div>
-                   </div>
+                        <h3>MS Office Specialist</h3>
+                        <div className="slide-image">
+                            <img src={msOffice} />
+                        </div>
+                    </div>
                    <div className="slide">
                         &nbsp;
                    </div>

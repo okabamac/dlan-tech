@@ -4,17 +4,47 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import Nav from "./Nav";
 
+interface User {
+    name: string;
+    email: string;
+}
+interface Message {
+    message: string;
+}
+interface SubmitResult {
+    success: boolean;
+    message: string;
+}
 const Contact: React.FC = () => {
-    const [formFields, setFormFields] = useState({
+    const [formFields, setFormFields] = useState<User>({
         name: "",
         email: "",
+    });
+    const [textMessage, setTextMessage] = useState<Message>({
         message: "",
     });
-    const [textAreaValue, setTextAreaValue] = useState<string>("");
+    const [submitResult, setSubmitResult ] = useState<SubmitResult | undefined >(undefined);
+    const handleSubmit = async (
+        e: React.FormEvent<HTMLFormElement>,
+    ): Promise<void> => {
+        e.preventDefault();
+        console.log('zzzzzzzzzzzzzzzzzzzzz');
+        // if (this.validateForm()) {
+        //     const submitSuccess: boolean = await this.submitForm();
+        //     this.setState({ submitSuccess });
+        // }
+    };
     const updateField = (e: React.ChangeEvent<HTMLInputElement>,
     ): void => {
         setFormFields({
             ...formFields,
+            [e.target.name]: e.target.value,
+        });
+    };
+    const updateMessage = (e: React.ChangeEvent<HTMLTextAreaElement>,
+    ): void => {
+        setTextMessage({
+            ...textMessage,
             [e.target.name]: e.target.value,
         });
     };
@@ -25,7 +55,7 @@ const Contact: React.FC = () => {
                 <h1>CONTACT</h1>
                 <div className="form-content">
                     <div className="form">
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <input
                                 type="text"
                                 value={formFields.name}
@@ -44,10 +74,9 @@ const Contact: React.FC = () => {
                             placeholder="Message"
                             name="message"
                             required
-                            value={textAreaValue}
-                                onChange={(
-                                    ev: React.ChangeEvent<HTMLTextAreaElement>,
-                                ): void => setTextAreaValue(ev.target.value)}/>
+                            value={textMessage.message}
+                            onChange={updateMessage}
+                            />
                         <button className="send-btn">Send</button>
                         </form>
                     </div>
