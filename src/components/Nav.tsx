@@ -11,10 +11,14 @@ interface Props extends RouteComponentProps {
 
 const Nav = withRouter(({ history, underline, color, display, showServices }: Props) => {
     const [navOpened, setNavOpened] = useState(false);
+    const [flickHmbg, setFlickHmbr] = useState(false);
     const navClassNames = navOpened ? "nav-links nav-active" : "nav-links";
+    const hamburgerClass = flickHmbg ? `${color} flick` : `${color}`;
     const toggle = (e: React.MouseEvent<HTMLDivElement>) => {
         if (!showServices) {
-            return setNavOpened(!navOpened);
+            setFlickHmbr(!flickHmbg);
+            setNavOpened(!navOpened);
+            return;
         }
         return history.push("/services");
     };
@@ -28,10 +32,10 @@ const Nav = withRouter(({ history, underline, color, display, showServices }: Pr
                     <NavLink to="/services" activeClassName="current" id={underline === "services" ? "underline" : ""}>
                         Services</NavLink>
                     <NavLink to="/contact" activeClassName="current" id={underline === "contact" ? "underline" : ""}>
-                        Contact us</NavLink>
+                        Contact Us</NavLink>
             </nav>
             </div>
-            <div id="hamburger-icon" className={color} onClick={toggle}>
+            <div id="hamburger-icon" className={hamburgerClass} onClick={toggle}>
                 <div className="btn-line line-1"></div>
                 <div className="btn-line line-2"></div>
                 <div className="btn-line line-3"></div>
