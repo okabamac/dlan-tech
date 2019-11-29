@@ -81,7 +81,7 @@ const Contact: React.FC = () => {
     };
     return (
         <main style={{ backgroundColor: "#333" }}>
-            <Nav color="yellow" display={true} showServices={false} />
+            <Nav background="black" color="yellow" display={true} showServices={false} />
             <div id="content">
                 <h1>CONTACT</h1>
                 <div className="form-content">

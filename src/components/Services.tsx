@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import hardware from "../images/hardware2.jpg";
 import sql from "../images/microsoft-sql-server.svg";
 import msOffice from "../images/microsoft365.jpg";
-import webDev from "../images/webdev2.jpeg";
+import webDev from "../images/web-dev.jpeg";
 import Nav from "./Nav";
 
 const overlayDiv = {
@@ -56,7 +56,7 @@ const Services: React.FC = () => {
     };
     return (
         <main style={{ backgroundColor: "orange"}}>
-            <Nav color="black" display={true} showServices={false}/>
+            <Nav background="orange" color="black" display={true} showServices={false}/>
             <div id="content">
                 <div className="draggable-slider" ref={divRef}
                     onMouseDown={onMouseDown}
@@ -70,12 +70,12 @@ const Services: React.FC = () => {
                         <h3>Web Development</h3>
                        <div className="slide-image">
                            <div className="hover">
-                               {/* <h1>Web Development</h1>
+                               <h1>Web Development</h1>
                                <p>We offer courses in web development using HTML, CSS,
                                    Javascript, NodeJs and Postgres </p>
-                                   <button>View Curriculum</button> */}
+                                   <button>View Curriculum</button>
                            </div>
-                            <img src={webDev} />
+                            <img src={webDev} alt="Web Development"/>
                        </div>
                    </div>
                    <div className="slide">
@@ -83,7 +83,7 @@ const Services: React.FC = () => {
                         <h3>Hardware and Networking</h3>
                        <div className="slide-image">
                             <div className="hover"></div>
-                            <img src={hardware} />
+                            <img src={hardware}  alt="Hardware and Networking"/>
                        </div>
                    </div>
                    <div className="slide">
@@ -91,7 +91,7 @@ const Services: React.FC = () => {
                         <h3>MS SQL Server</h3>
                        <div className="slide-image">
                             <div className="hover"></div>
-                            <img src={sql} />
+                            <img src={sql} alt="MS SQL"/>
                        </div>
                    </div>
                     <div className="slide">
@@ -99,7 +99,7 @@ const Services: React.FC = () => {
                         <h3>MS Office Specialist</h3>
                         <div className="slide-image">
                             <div className="hover"></div>
-                            <img src={msOffice} />
+                            <img src={msOffice} alt="Office Specialist"/>
                         </div>
                     </div>
                    <div className="slide">

@@ -4,11 +4,12 @@ import {  NavLink, RouteComponentProps, withRouter } from "react-router-dom";
 
 interface Props extends RouteComponentProps {
     color?: string;
+    background?: string;
     display?: boolean;
     showServices?: boolean;
 }
 
-const Nav = withRouter(({ history, color, display, showServices }: Props) => {
+const Nav = withRouter(({ history, color, display, showServices, background }: Props) => {
     const [navOpened, setNavOpened] = useState(false);
     const [flickHmbg, setFlickHmbr] = useState(false);
     const navClassNames = navOpened ? "nav-links nav-active" : "nav-links";
@@ -26,7 +27,7 @@ const Nav = withRouter(({ history, color, display, showServices }: Props) => {
             <div style={{ display: display ? "block" : "none", color: color === "yellow" ? "#fff" : "#333" }}>
             <h5>
                 dlan <span className="rec-txt-black">Technologies</span></h5>
-            <nav className={navClassNames}>
+            <nav className={navClassNames} id={background}>
                     <NavLink to="/" >Home</NavLink>
                     <NavLink to="/services" activeClassName="current">
                         Services</NavLink>
