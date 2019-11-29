@@ -246,11 +246,11 @@ h1 {
          &::before {
           content : "";
         position: absolute;
-        left    : -0.5em;
+        left: -0.5em;
         z-index: 100;
-        top  : 50%;
-        width  : 3px;
-        height   : 50%;  /* or 100px */
+        top: 50%;
+        width: 3px;
+        height: 50%;  /* or 100px */
         background-color: #ffeaa7;
         background-image: linear-gradient(315deg, #ffeaa7 0%, #413e3e 74%);
         }
@@ -258,17 +258,28 @@ h1 {
           width: 100%;
           height: 100%;
         }
-        .hover {
-          position: absolute;
-          background-color: red;
-          width: 100%;
-          height: 100%;
+        &:hover {
+          .hover {
+            position: absolute;
+            animation: circle 2s ease-in-out;
+            background: rgba(0, 0, 0, 0.4);
+            clip-path: circle(75%);
+            width: 100%;
+            height: 100%;
+            h1, p, button {
+              display: block;
+            }
+          }
         }
       }
     }
   }
 }
-
+@keyframes circle {
+  0% { clip-path: circle(0%); }
+  50% { clip-path: circle(50%); }
+  100% { clip-path: circle(100%); }
+}
 ::-webkit-scrollbar {
     display: none;
 }
@@ -289,6 +300,13 @@ h1 {
     border: none;
     outline: none;
     font: 200 14px 'Oswald', sans-serif;
+  }
+  form .contact-feedback {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #333;
   }
   form input {
     height: 40px;

@@ -24,11 +24,42 @@ const Contact: React.FC = () => {
         message: "",
     });
     const [submitResult, setSubmitResult ] = useState<SubmitResult | undefined >(undefined);
+    const encode = (data: { [x: string]: string | number | boolean; }) => {
+        return Object.keys(data)
+            .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+            .join("&");
+    };
     const handleSubmit = async (
         e: React.FormEvent<HTMLFormElement>,
     ): Promise<void> => {
         e.preventDefault();
-        console.log('zzzzzzzzzzzzzzzzzzzzz');
+        const formDetails = {name: formFields.name, email: formFields.email, message: textMessage.message};
+        try {
+         const res =  await fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: encode({ "form-name": "contact", ...formDetails }),
+            });
+         if (res) {
+             setSubmitResult({
+                 success: true,
+                 message: "Thanks for contacting us!",
+             });
+             setFormFields({
+                 name: "",
+                 email: "",
+             });
+             setTextMessage({
+                 message: "",
+             });
+             alert(res); }
+        } catch (err) {
+            setSubmitResult({
+                success: false,
+                message: "Oops! Something isn't right, please try again later",
+            });
+            alert(err);
+        }
         // if (this.validateForm()) {
         //     const submitSuccess: boolean = await this.submitForm();
         //     this.setState({ submitSuccess });
@@ -55,7 +86,10 @@ const Contact: React.FC = () => {
                 <h1>CONTACT</h1>
                 <div className="form-content">
                     <div className="form">
-                        <form onSubmit={handleSubmit}>
+                    {submitResult ? <div className="contact-feedback" style={{color: "#fff"}}>
+                    <h3>{submitResult.message}</h3>
+                    </div> : ""}
+                        <form onSubmit={handleSubmit} >
                             <input
                                 type="text"
                                 value={formFields.name}
