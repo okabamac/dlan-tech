@@ -10,7 +10,6 @@ const Home: React.FC = () => {
           <div className="ruler"></div>
           <p>We're a computer education company focused on <span className="smaller-rec-txt">equipping clients </span>
           with modern computer knowledge</p>
-          <div className="clip"></div>
         </section>
       <div className="arrow"></div>
       </header>

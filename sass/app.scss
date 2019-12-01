@@ -1,13 +1,9 @@
 @import '_colors.scss';
 @import '_mixin.scss';
 
-// .App {
-//   text-align: center;
+// .App-logo {
+//   height: 40vmin;
 // }
-
-.App-logo {
-  height: 40vmin;
-}
 
 .App-header {
   background-color: $bg-main-color;
@@ -29,27 +25,29 @@
   cursor: pointer;
   position: absolute;
   width: 40px;
-  height: 40px;
+  padding: 0.1em;
+  height: 50px;
   top: 1.5em;
   right: 2em;
   @include easeOut;
 
     .line-1 {
-      width: 35px;
+      width: 20px;
+      margin-left: 15px;
     }
 
     .line-2 {
-      width: 30px;
-      margin-left: 5px;
+      width: 35px;
     }
 
     .line-3 {
-      width: 25px;
-      margin-left: 10px;
+      width: 20px;
+      margin-right: 10px;
     }
 
     .btn-line {
-      height: 2px;
+      height: 0.15em;
+      border-radius: 2px;
       margin-top: 5px;
       margin-bottom: 5px;
       @include easeOut;
@@ -62,7 +60,7 @@
 
         //Line 1 rotate
         &:nth-child(1) {
-          transform: rotate(45deg) translate(5px, 5px);
+          transform: rotate(45deg) translate(12px, 12px);
           // background: $secondary-color;
         }
 
@@ -73,7 +71,7 @@
 
         //Line 2 Rotate
         &:nth-child(3) {
-          transform: rotate(-45deg) translate(4px, -2.5px);
+          transform: rotate(-45deg) translate(-2px, -1px);
         }
       }
     }
@@ -84,6 +82,10 @@
   }
   .yellow > div {
     background: $bg-sec-color;
+    // background: #D38312;  /* fallback for old browsers */
+    // background: -webkit-linear-gradient(to right, #A83279, #D38312);  /* Chrome 10-25, Safari 5.1-6 */
+    // background: linear-gradient(to right, #A83279, #D38312); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   }
 .landing-section {
   position: relative;
@@ -92,13 +94,48 @@
   line-height: 2;
   padding: 3.5em;
   text-align: left;
+  p {
+    animation: moveUp 2s ease-in-out;
+    position: relative;
+    top: 0.5em;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+    opacity: 0;
+  }
+}
+
+@keyframes moveUp {
+  0% {
+    top: 300px;
+    opacity: 0.3;
+  }
+  75% {
+    top: 0.1em;
+    opacity: 0.7;
+  }
+  100% {
+    top: 0.5em;
+    opacity: 1;
+  }
 }
 
 .rec-txt-yellow {
   padding: 0.5em;
-  background-color: $bg-sec-color;
+  animation-delay: 2s;
+  animation: fill 2s ease-in-out;
+  animation-fill-mode: forwards;
+  background-size: 200% 100%;
+  background-image: linear-gradient(to right, $bg-main-color 50%, $bg-sec-color 50%);
   margin-left: 1em;
   color: $bg-main-color;
+}
+@keyframes fill {
+ 0% {
+   background-position: -0% 0;
+ }
+ 100% {
+    background-position: -100% 0;
+ }
 }
 h3, h5 {
   margin-bottom: 1em;
@@ -119,37 +156,6 @@ h5 {
 .smaller-rec-txt {
   color: $bg-sec-color;
 }
-.clip {
-  display: inline-block;
-  width: 200px;
-  position: relative;
-  top: 3em;
-  opacity: 0.8;
-  height: 200px;
-  margin: 0 auto;
-  background: orange;
-  cursor: pointer;
-  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-  animation: polygons 4s alternate infinite;
-}
-
-@keyframes polygons {
-  25% {
-    clip-path: polygon(20% 0%, 100% 38%, 70% 90%, 0% 100%);
-    opacity: 0.8;
-    background: pink;
-  }
-  50% {
-    clip-path: polygon(0 46%, 100% 15%, 55% 74%, 0 100%);
-    opacity: 0.8;
-    background: orange;
-  }
-  75% {
-    clip-path: polygon(100% 38%, 100% 38%, 66% 100%, 0 53%);
-    opacity: 0.8;
-    background: cornflowerblue;
-  }
-}
 .arrow {
   position: absolute;
   bottom: 40px;
@@ -162,12 +168,24 @@ h5 {
   border-color: $bg-sec-color;
   border-width: 0px 2px 2px 0px;
   transform: rotate(45deg);
-  transition: border-width 200ms ease-in-out;
+  animation: bounce 2s infinite;
 }
-
-.arrow:hover {
-  border-bottom-width: 4px;
-  border-right-width: 4px;
+@keyframes bounce {
+  0% {
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    bottom: 38px;
+  }
+   50% {
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+    bottom: 42px;
+  }
+  100% {
+    border-bottom-width: 4px;
+    border-right-width: 4px;
+    bottom: 40px;
+  }
 }
 
 main {
@@ -205,6 +223,10 @@ main {
     color: inherit;
     text-decoration: none;
     font-size: 16px;
+    transition: all 200ms ease-in-out;
+    &:hover {
+      font-size: 105%;
+    }
     &:after {
     background: none repeat scroll 0 0 transparent;
     bottom: 0;
@@ -236,7 +258,7 @@ main {
     }
 #content {
 position: relative;
-top: 180px;
+top: 160px;
 padding: 1em 0em;
 
 h1 {
@@ -250,25 +272,27 @@ h1 {
     display: grid;
     padding: 1rem;
     width: 100%;
-    grid-template-columns: repeat(7, 400px);
-    grid-column-gap: 3em;
-    top: 10vh;
+    grid-template-columns: repeat(7, 500px);
+    grid-column-gap: 1em;
+    top: 6vh;
     user-select: none;
     white-space: nowrap;
     overflow:scroll;
+    scroll-behavior: smooth;
 
     .slide {
+      position: relative;
       padding: 10px;
       line-height: 1;
-
       h3 {
         margin: 2px;
       }
       .slide-image {
         position: relative;
-        width: 400px;
-        height: 300px;
-        background-color: #333;
+        max-width: 800px;
+        height: 350px;
+        background-color: $bg-main-color;
+        background-size: cover;
         &::after {
           content : "";
         position: absolute;
@@ -291,31 +315,66 @@ h1 {
         background-color: #ffeaa7;
         background-image: linear-gradient(315deg, #ffeaa7 0%, #413e3e 74%);
         }
-        img {
+        .service-content {
+          position: relative;
           width: 100%;
           height: 100%;
+          display: flex;
+          align-items: left;
+          padding: 1em;
+          word-wrap: break-word;
+          justify-content: center;
+          color: #fff;
+          opacity: 0;
+          flex-direction: column;
+          white-space: pre-wrap;      /* CSS3 */
+          white-space: -moz-pre-wrap; /* Firefox */
+          white-space: -pre-wrap;     /* Opera <7 */
+          white-space: -o-pre-wrap;   /* Opera 7 */
+          button {
+            width: 40%;
+            height: 30px;
+            border: none;
+            cursor: pointer;
+            color: #333;
+            font-weight: 700;
+            color: #fff;
+            border-radius: 30px;
+            margin-top: 1em;
+            background: -webkit-linear-gradient(to right, #F37335, #FDC830, rgb(27,27,27) 50%);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #F37335, #FDC830, rgb(27,27,27) 50%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+          }
         }
-        &:hover {
+        .hover {
+          background: transparent;
+        }
+         &:hover {
           .hover {
             position: absolute;
-            animation: circle 2s ease-in-out;
-            background: rgba(0, 0, 0, 0.4);
-            clip-path: circle(75%);
+            transition: all 200ms ease-in;
+            background: rgba(0, 0, 0, 0.3);
             width: 100%;
             height: 100%;
-            h1, p, button {
-              display: block;
-            }
+          }
+          .service-content {
+              animation: increaseOpacity 1s ease-in-out;
+              animation-fill-mode: forwards;
           }
         }
       }
     }
   }
 }
-@keyframes circle {
-  0% { clip-path: circle(75%); }
-  50% { clip-path: circle(25%); }
-  100% { clip-path: circle(75%); }
+@keyframes increaseOpacity {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 ::-webkit-scrollbar {
     display: none;
@@ -326,16 +385,14 @@ h1 {
   grid-template-columns: 1fr 1fr;
   grid-gap: 3em;
   padding: 5%;
-   form > * {
+   form > div {
     display: block;
     width: 100%;
-    margin-bottom: 1.2em;
+    margin-bottom: 0.5em;
     padding: 0.4em;
     background-color: #333;
     color: #fff;
     letter-spacing: 1px;
-    border: none;
-    outline: none;
     font: 200 14px 'Oswald', sans-serif;
   }
   form .contact-feedback {
@@ -345,37 +402,49 @@ h1 {
     z-index: 1;
     background-color: #333;
   }
+  form div {
+    margin-bottom: 0.7em;
+    position: relative;
+  }
   form input {
+    border: none;
+    outline: none;
+    width: 100%;
     height: 40px;
+    padding: 0.4em;
+    color: #fff;
     background-color: rgb(27,27,27);
     &:focus {
       background-color: rgb(27,27,27);
     }
   }
  textarea {
+   border: none;
+  outline: none;
+    width: 100%;
+    padding: 0.4em;
+    color: #fff;
    background-color: rgb(27,27,27);
  }
   form .send-btn {
     border: none;
+    // border-radius: 10px;
     cursor: pointer;
     padding: 1em;
     color: #333;
+    font-weight: 700;
     color: #fff;
-    background-color: rgb(27,27,27);
-    transition: background 400ms ease-in-out;
-
+    width: 100%;
+    background: -webkit-linear-gradient(to right, #F37335, #FDC830, rgb(27,27,27) 50%);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #F37335, #FDC830, rgb(27,27,27) 50%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all .5s ease-out;
   &:hover {
-    // background-position: 0;
-  //   background: {
-  //   image: linear-gradient(45deg,$bg-sec-color 50%, transparent 50%);
-  //   position: 100%;
-  //   size: 400%;
-  // }
-  background: $bg-sec-color;
+    background-position: left bottom;
     color: #333;
+    }
   }
-  }
-
   .contact-details {
     color: #fff;
     p {
@@ -392,7 +461,26 @@ h1 {
     }
   }
 }
-
+ button:focus {
+    outline: 0;
+    box-shadow: none!important;
+    }
+label {
+    position: absolute;
+    top: 0.5em;
+    left: 0;
+    padding-left: 0.7em;
+    transition: all 200ms;
+    opacity: 0.6;
+}
+input:focus+label,
+input:valid+label,
+textarea:focus+label,
+textarea:valid+label {
+    transform: translate3d(-2%, -112%, 0);
+    opacity: 1;
+    font-size: 120%;
+}
 /* Social Media */
 .social-media-list {
   position: relative;
@@ -466,7 +554,7 @@ h1 {
       float: left;
       clear: left;
       margin: 0.5em;
-
+      cursor: pointer;
       }
   }
   .form-content {

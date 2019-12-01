@@ -90,28 +90,38 @@ const Contact: React.FC = () => {
                     <h3>{submitResult.message}</h3>
                     </div> : ""}
                         <form onSubmit={handleSubmit} >
-                            <input
-                                type="text"
-                                value={formFields.name}
-                                placeholder="Name"
-                                name="name"
-                                required
-                                onChange={updateField}
-                            />
-                            <input type="email"
-                            placeholder="Email"
-                            name="email"
-                            value={formFields.email}
-                            onChange={updateField}
-                            />
+                            <div>
+                                <input
+                                    type="text"
+                                    value={formFields.name}
+                                    name="name"
+                                    required
+                                    onChange={updateField}
+                                />
+                                <label htmlFor="name">Name</label>
+                            </div>
+                            <div>
+                                <input
+                                    type="email"
+                                    value={formFields.email}
+                                    name="email"
+                                    required
+                                    onChange={updateField}
+                                />
+                                <label htmlFor="email">Email</label>
+                            </div>
+                            <div>
                             <textarea rows={10}
-                            placeholder="Message"
                             name="message"
                             required
                             value={textMessage.message}
                             onChange={updateMessage}
                             />
+                                <label htmlFor="message">Message</label>
+                            </div>
+                            <div>
                         <button className="send-btn">Send</button>
+                            </div>
                         </form>
                     </div>
                     <div className="contact-details">
@@ -121,11 +131,12 @@ const Contact: React.FC = () => {
                                 219, Gado Nasko Road, Beside First Bank, Kubwa, Abuja</span></p>
                                 <p><FontAwesomeIcon icon={faPhone} />
                                     <span>
-                                        <a href="tel:+2349059564447" title="Give us a call">(+234) 09059564447</a>
+                                    <a href="tel:+2349059564447" title="Give us a call">(+234) 09059564447</a>, &nbsp;
+                                         <a href="tel:+2348175833014" title="Give us a call">(+234) 08175833014</a>
                                         </span></p>
                                 <p><FontAwesomeIcon icon={faEnvelope} />
                                     <span><a href="mailto:#" title="Send us an email">
-                                    dlan.officecafe@gmail.com</a></span></p>
+                                    info@dlan.tech</a></span></p>
                         </div>
                         <hr/>
                         <ul className="social-media-list">

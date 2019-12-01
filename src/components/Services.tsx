@@ -5,10 +5,6 @@ import msOffice from "../images/microsoft365.jpg";
 import webDev from "../images/web-dev.jpeg";
 import Nav from "./Nav";
 
-const overlayDiv = {
-    width: "0",
-    height: "0",
-}
 interface ServiceState {
     isDown: boolean;
     clientX: number;
@@ -52,6 +48,7 @@ const Services: React.FC = () => {
         if (divRef.current) {
             divRef.current.scrollLeft = scrollX - clientX + e.clientX;
             setState({ ...state, clientX: e.clientX, scrollX: scrollX + e.clientX - clientX });
+            console.log(clientX, scrollX, divRef.current.scrollLeft);
      }
     };
     return (
@@ -64,42 +61,53 @@ const Services: React.FC = () => {
                     onMouseLeave={onMouseLeave}
                     onMouseMove={onMouseMove}
                     >
-
                    <div className="slide">
                         <h3>.01</h3>
                         <h3>Web Development</h3>
-                       <div className="slide-image">
-                           <div className="hover">
-                               <h1>Web Development</h1>
-                               <p>We offer courses in web development using HTML, CSS,
-                                   Javascript, NodeJs and Postgres </p>
-                                   <button>View Curriculum</button>
+                        <div className="slide-image" style={{ backgroundImage: `url(${webDev})`}}>
+                        <div className="hover">
                            </div>
-                            <img src={webDev} alt="Web Development"/>
+                            <div className="service-content">
+                                <p>We offer courses in web development using HTML, CSS,
+                                   Javascript, NodeJs and Postgres </p>
+                                <button>View Outline</button>
+                            </div>
                        </div>
                    </div>
                    <div className="slide">
                         <h3>.02</h3>
                         <h3>Hardware and Networking</h3>
-                       <div className="slide-image">
+                        <div className="slide-image" style={{ backgroundImage: `url(${hardware})` }} >
                             <div className="hover"></div>
-                            <img src={hardware}  alt="Hardware and Networking"/>
+                            <div className="service-content">
+                                <p>We offer courses in web development using HTML, CSS,
+                                   Javascript, NodeJs and Postgres </p>
+                                <button>View Outline</button>
+                            </div>
                        </div>
                    </div>
                    <div className="slide">
                         <h3>.03</h3>
                         <h3>MS SQL Server</h3>
-                       <div className="slide-image">
+                        <div className="slide-image" style={{ backgroundImage: `url(${sql})` }}>
                             <div className="hover"></div>
-                            <img src={sql} alt="MS SQL"/>
+                            <div className="service-content">
+                                <p>We offer courses in web development using HTML, CSS,
+                                   Javascript, NodeJs and Postgres </p>
+                                <button>View Outline</button>
+                            </div>
                        </div>
                    </div>
                     <div className="slide">
                         <h3>.04</h3>
                         <h3>MS Office Specialist</h3>
-                        <div className="slide-image">
+                        <div className="slide-image" style={{ backgroundImage: `url(${msOffice})` }}>
                             <div className="hover"></div>
-                            <img src={msOffice} alt="Office Specialist"/>
+                            <div className="service-content">
+                                <p>We offer courses in web development using HTML, CSS,
+                                   Javascript, NodeJs and Postgres </p>
+                                <button>View Outline</button>
+                            </div>
                         </div>
                     </div>
                    <div className="slide">
