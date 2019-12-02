@@ -4,7 +4,7 @@ import Nav from "./Nav";
 const Home: React.FC = () => {
     return (
         <header className="App-header">
-        <Nav background="black" color="yellow" display={false} showServices={true}/>
+        <Nav background="black" color="white" display={false} showServices={true}/>
         <section className="landing-section">
           <h3>dlan <span className="rec-txt-yellow">Technologies</span></h3>
           <div className="ruler"></div>

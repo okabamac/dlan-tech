@@ -24,7 +24,7 @@ const Nav = withRouter(({ history, color, display, showServices, background }: P
     };
     return (
         <>
-            <div style={{ display: display ? "block" : "none", color: color === "yellow" ? "#fff" : "#333" }}>
+            <div style={{ display: display ? "block" : "none", color: color === "white" ? "#fff" : "#333" }}>
             <h5>
                 dlan <span className="rec-txt-black">Technologies</span></h5>
             <nav className={navClassNames} id={background}>

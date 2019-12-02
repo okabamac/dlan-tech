@@ -1,3 +1,5 @@
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useRef, useState } from "react";
 import hardware from "../images/hardware2.jpg";
 import sql from "../images/microsoft-sql-server.svg";
@@ -5,11 +7,25 @@ import msOffice from "../images/microsoft365.jpg";
 import webDev from "../images/web-dev.jpeg";
 import Nav from "./Nav";
 
+const imgArray = [webDev, hardware, sql, msOffice];
+let image = "";
 interface ServiceState {
     isDown: boolean;
     clientX: number;
-    scrollX: number;
+   scrollX: number;
 }
+interface ExpandService {
+    title: string;
+    text: any[];
+}
+interface ContentState {
+    title: string;
+    text: any[];
+}
+interface BtnContent {
+    contentDisplay: string;
+}
+
 const Services: React.FC = () => {
     const divRef = useRef<HTMLDivElement>(null);
     const [state, setState] = useState<ServiceState>({
@@ -17,6 +33,24 @@ const Services: React.FC = () => {
         clientX: 0,
         scrollX: 0,
     });
+    const [expandService, setExpandService] = useState<ExpandService | undefined>(undefined);
+    const [btnContent, setBtnCOntent] = useState<BtnContent>({
+        contentDisplay: "",
+    });
+    const navColor = expandService ? "white" : "black";
+    const expandContent = (e: React.MouseEvent<HTMLButtonElement>, param: number, content: ContentState): void => {
+    const bgImage = imgArray[param - 1];
+    const {title, text} = content;
+    image = bgImage;
+    setExpandService({
+           title,
+           text,
+       });
+    };
+    const resetBtnFn = (e: React.MouseEvent<HTMLDivElement>) => {
+        setExpandService(undefined);
+        image = "";
+    };
     const onMouseDown = (e: React.MouseEvent<HTMLDivElement>): void => {
         e.persist();
         setState({
@@ -48,74 +82,97 @@ const Services: React.FC = () => {
         if (divRef.current) {
             divRef.current.scrollLeft = scrollX - clientX + e.clientX;
             setState({ ...state, clientX: e.clientX, scrollX: scrollX + e.clientX - clientX });
-            console.log(clientX, scrollX, divRef.current.scrollLeft);
+            // console.log(clientX, scrollX, divRef.current.scrollLeft);
      }
     };
     return (
         <main style={{ backgroundColor: "orange"}}>
-            <Nav background="orange" color="black" display={true} showServices={false}/>
-            <div id="content">
+            <Nav background="orange" color={navColor} display={true} showServices={false}/>
+            {expandService ? <div className="my-services" style={{ backgroundImage: `url(${image})` }}>
+                <div id="overlayService">
+                    <h1>{expandService.title}</h1>
+                    <ul>{
+                        expandService.text.map((list, index) =>
+                        <li key={index}>{list}</li>,
+                        )}</ul>
+                    <div className="reset bounce" onClick={resetBtnFn}>
+                        <FontAwesomeIcon icon={faArrowLeft} />
+                    </div>
+                </div>
+            </div> : <div id="content">
                 <div className="draggable-slider" ref={divRef}
                     onMouseDown={onMouseDown}
                     onMouseUp={onMouseUp}
                     onMouseLeave={onMouseLeave}
                     onMouseMove={onMouseMove}
-                    >
-                   <div className="slide">
+                >
+                    <div className="slide">
                         <h3>.01</h3>
                         <h3>Web Development</h3>
-                        <div className="slide-image" style={{ backgroundImage: `url(${webDev})`}}>
-                        <div className="hover">
-                           </div>
-                            <div className="service-content">
-                                <p>We offer courses in web development using HTML, CSS,
-                                   Javascript, NodeJs and Postgres </p>
-                                <button>View Outline</button>
+                        <div className="slide-image" style={{ backgroundImage: `url(${webDev})` }}>
+                            <div className="hover">
                             </div>
-                       </div>
-                   </div>
-                   <div className="slide">
+                            <div className="service-content">
+                                <p>We offer courses in web development covering both frontend and backend </p>
+                                    <button onClick={(e) => expandContent(e, 1, {
+                                        title: "Web Development",
+                                        text: ["HTML", "CSS", "Javascript", "NodeJS", "Postgres"],
+                                    })}>View Outline</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="slide">
                         <h3>.02</h3>
                         <h3>Hardware and Networking</h3>
                         <div className="slide-image" style={{ backgroundImage: `url(${hardware})` }} >
                             <div className="hover"></div>
                             <div className="service-content">
-                                <p>We offer courses in web development using HTML, CSS,
-                                   Javascript, NodeJs and Postgres </p>
-                                <button>View Outline</button>
+                                <p>You can acquire skills in hardware and networking </p>
+                                    <button onClick={(e) => expandContent(e, 2, {
+                                        title: "Hardware & Networking",
+                                        text: ["Introduction to computer", "Basic Networking concepts",
+                                            "Introduction to various networking devices",
+                                            "Inside the PC", "Network basic and configuration",
+                                        "Introduction to servers and network security"],
+                                    })}>View Outline</button>
                             </div>
-                       </div>
-                   </div>
-                   <div className="slide">
+                        </div>
+                    </div>
+                    <div className="slide">
                         <h3>.03</h3>
                         <h3>MS SQL Server</h3>
                         <div className="slide-image" style={{ backgroundImage: `url(${sql})` }}>
                             <div className="hover"></div>
                             <div className="service-content">
-                                <p>We offer courses in web development using HTML, CSS,
-                                   Javascript, NodeJs and Postgres </p>
-                                <button>View Outline</button>
+                                <p>Get the skills to setup SQL Server and write scripts for database </p>
+                                    <button onClick={(e) => expandContent(e, 3, {
+                                        title: "SQL Server",
+                                        text: ["MS Word", "MS Excel", "MS Powerpoint", "MS Access"],
+                                    })}>View Outline</button>
                             </div>
-                       </div>
-                   </div>
+                        </div>
+                    </div>
                     <div className="slide">
                         <h3>.04</h3>
                         <h3>MS Office Specialist</h3>
                         <div className="slide-image" style={{ backgroundImage: `url(${msOffice})` }}>
                             <div className="hover"></div>
                             <div className="service-content">
-                                <p>We offer courses in web development using HTML, CSS,
-                                   Javascript, NodeJs and Postgres </p>
-                                <button>View Outline</button>
+                                <p>Get the skills to function in a working office using MS Office Suite </p>
+                                    <button onClick={(e) => expandContent(e, 4, {
+                                        title: "Microsoft Office Suite",
+                                        text: ["MS Word", "MS Excel", "MS Powerpoint", "MS Access"],
+                                    })}>View Outline</button>
                             </div>
                         </div>
                     </div>
-                   <div className="slide">
+                    <div className="slide">
                         &nbsp;
                    </div>
-               </div>
+                </div>
             </div>
-        </main>
+        }
+    </main>
     );
 };
 
