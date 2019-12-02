@@ -58,7 +58,6 @@ const Contact: React.FC = () => {
                 success: false,
                 message: "Oops! Something isn't right, please try again later",
             });
-            alert(err);
         }
         // if (this.validateForm()) {
         //     const submitSuccess: boolean = await this.submitForm();
