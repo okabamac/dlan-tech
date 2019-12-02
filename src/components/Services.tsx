@@ -86,7 +86,8 @@ const Services: React.FC = () => {
      }
     };
     return (
-        <main style={{ backgroundColor: "orange"}}>
+        <main style={{
+            backgroundColor: "#ffdc25"}}>
             <Nav background="orange" color={navColor} display={true} showServices={false}/>
             {expandService ? <div className="my-services" style={{ backgroundImage: `url(${image})` }}>
                 <div id="overlayService">
@@ -147,7 +148,7 @@ const Services: React.FC = () => {
                                 <p>Get the skills to setup SQL Server and write scripts for database </p>
                                     <button onClick={(e) => expandContent(e, 3, {
                                         title: "SQL Server",
-                                        text: ["MS Word", "MS Excel", "MS Powerpoint", "MS Access"],
+                                        text: ["SQL Server Basics", "Understanding Tables and Databases", "Indexes and Views", "Database Diagrams, The Query Analyzer and SQL Basics", "Stored Procedures, Triggers and Replication", "Data Transformation Services (DTS), Back Ups/Restores, Users, Roles, Logins and Analysis Manager"],
                                     })}>View Outline</button>
                             </div>
                         </div>

@@ -165,9 +165,9 @@ h5 {
   border-color: $bg-sec-color;
   border-width: 0px 2px 2px 0px;
   transform: rotate(45deg);
-  animation: bounce 2s infinite;
+  animation: shake 2s infinite;
 }
-@keyframes bounce {
+@keyframes shake {
   0% {
     border-bottom-width: 0px;
     border-right-width: 0px;
@@ -290,7 +290,7 @@ main {
     }
 #content {
 position: relative;
-top: 160px;
+top: 30vh;
 padding: 1em 0em;
 
 h1 {
@@ -323,6 +323,7 @@ h1 {
         position: relative;
         max-width: 800px;
         height: 350px;
+        box-shadow: 0 2px 4px #000;
         background-color: $bg-main-color;
         background-size: cover;
         &::after {
@@ -332,7 +333,7 @@ h1 {
         z-index: 100;
         top  : 0;
         width  : 3px;
-        height   : 50%;  /* or 100px */
+        height   : 100%;  /* or 100px */
         background-color: #ffeaa7;
         background-image: linear-gradient(315deg, #ffeaa7 0%, #413e3e 74%);
         }
@@ -341,9 +342,9 @@ h1 {
         position: absolute;
         left: -0.5em;
         z-index: 100;
-        top: 50%;
+        top: 0%;
         width: 3px;
-        height: 50%;  /* or 100px */
+        height: 100%;  /* or 100px */
         background-color: #ffeaa7;
         background-image: linear-gradient(315deg, #ffeaa7 0%, #413e3e 74%);
         }
@@ -358,13 +359,14 @@ h1 {
           justify-content: center;
           color: #fff;
           opacity: 0;
+          font-weight: 200;
           flex-direction: column;
           white-space: pre-wrap;      /* CSS3 */
           white-space: -moz-pre-wrap; /* Firefox */
           white-space: -pre-wrap;     /* Opera <7 */
           white-space: -o-pre-wrap;   /* Opera 7 */
           button {
-            width: 40%;
+            width: 30%;
             height: 30px;
             border: none;
             cursor: pointer;
@@ -372,7 +374,7 @@ h1 {
             font-weight: 700;
             color: #fff;
             border-radius: 30px;
-            margin-top: 1em;
+            margin-top: 2em;
             background: -webkit-linear-gradient(to right, #F37335, #FDC830, rgb(27,27,27) 50%);  /* Chrome 10-25, Safari 5.1-6 */
             background: linear-gradient(to right, #F37335, #FDC830, rgb(27,27,27) 50%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
           }
@@ -430,10 +432,10 @@ h1 {
     transform: translateX(0);
   }
   40% {
-    transform: translateX(-15px);
+    transform: translateX(-7px);
   }
   60% {
-    transform: translateX(-5px);
+    transform: translateX(-2px);
   }
 }
 .form-content {
@@ -532,7 +534,7 @@ input:focus+label,
 input:valid+label,
 textarea:focus+label,
 textarea:valid+label {
-    transform: translate3d(-2%, -112%, 0);
+    transform: translate3d(-4%, -112%, 0);
     opacity: 1;
     font-size: 120%;
 }
