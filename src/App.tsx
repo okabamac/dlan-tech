@@ -10,10 +10,10 @@ const App: React.FC = () => {
     <BrowserRouter>
     <div className="App">
       <Switch>
-        <Route exact path="/"component={Home}/>
-        <Route exact path="/services" component={Services}/>
-        <Route exact path="/contact" component={Contact}/>
-        <Route path="*" component={NotFound}/>
+          <Route exact path={process.env.PUBLIC_URL + "/"} component={Home}/>
+          <Route exact path={process.env.PUBLIC_URL + "/services"} component={Services}/>
+          <Route exact path={process.env.PUBLIC_URL + "/contact"} component={Contact}/>
+          <Route path={process.env.PUBLIC_URL + "*"} component={NotFound}/>
       </Switch>
     </div>
     </BrowserRouter>

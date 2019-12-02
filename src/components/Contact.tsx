@@ -52,7 +52,7 @@ const Contact: React.FC = () => {
              setTextMessage({
                  message: "",
              });
-             alert(res); }
+             }
         } catch (err) {
             setSubmitResult({
                 success: false,
