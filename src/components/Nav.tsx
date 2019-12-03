@@ -24,10 +24,14 @@ const Nav = withRouter(({ history, color, display, showServices, background }: P
     };
     return (
         <>
-            <div style={{ display: display ? "block" : "none", color: color === "white" ? "#fff" : "#333" }}>
-            <h5>
+            <div style={{ display: display ? "block" : "none", zIndex: 1000,
+            color: color === "white" ? "#fff" : "#333", position: "absolute",
+            width: "100vw", top: "-2em"}}>
+            <div className="logo">
+                <h5>
                 dlan <span className="rec-txt-black">Technologies</span></h5>
-            <nav className={navClassNames} id={background}>
+            </div>
+                <nav className={navClassNames} id={background}>
                     <NavLink to="/" >Home</NavLink>
                     <NavLink to="/services" activeClassName="current">
                         Services</NavLink>
@@ -35,7 +39,7 @@ const Nav = withRouter(({ history, color, display, showServices, background }: P
                         Contact Us</NavLink>
             </nav>
             </div>
-            <div id="hamburger-icon" className={hamburgerClass} onClick={toggle}>
+            <div id="hamburger-icon" className={hamburgerClass} style={{zIndex: 2001}} onClick={toggle}>
                 <div className="btn-line line-1"></div>
                 <div className="btn-line line-2"></div>
                 <div className="btn-line line-3"></div>

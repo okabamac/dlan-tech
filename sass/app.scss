@@ -23,7 +23,7 @@
 #hamburger-icon {
   z-index: 1000;
   cursor: pointer;
-  position: absolute;
+  position: fixed;
   width: 40px;
   padding: 0.1em;
   height: 50px;
@@ -91,6 +91,9 @@
   line-height: 2;
   padding: 3.5em;
   text-align: left;
+  h3 {
+    margin-bottom: 1em;
+  }
   p {
     animation: moveUp 2s ease-in-out;
     position: relative;
@@ -134,15 +137,24 @@
     background-position: -100% 0;
  }
 }
-h3, h5 {
+
+ h5 {
   margin-bottom: 1em;
 }
-h5 {
-  position: absolute;
-  top: 2.1em;
-  z-index: 2000;
+.logo {
+  z-index: 1000;
+  position: fixed;
+  width: 200px;
+  padding: 0.1em;
+  height: 40px;
+  top: 1.5em;
   left: 1em;
 }
+// h5 {
+//   position: relative;
+//   top: 4.7em;
+//   left: 1em;
+// }
 .ruler {
   position: relative;
   height: 2px;
@@ -235,17 +247,16 @@ main {
 .rec-txt-black {
   padding: 0.8em;
   background-color: $bg-main-color;
-  margin-left: 0.5em;
+  margin-left: 0.1em;
   color: $bg-sec-color;
 }
 
 .nav-links {
   position: fixed;
-  padding-top: 2em;
+  padding-top: 3.5em;
   font-weight: 400;
   width: 100vw;
   text-align: center;
-  z-index: 1000;
 
   a {
     position: relative;
@@ -290,7 +301,7 @@ main {
     }
 #content {
 position: relative;
-top: 25vh;
+top: 27vh;
 padding: 1em 0em;
 
 h1 {
@@ -321,8 +332,8 @@ h1 {
       }
       .slide-image {
         position: relative;
-        max-width: 800px;
-        height: 350px;
+        max-width: 700px;
+        height: 320px;
         box-shadow: 0 2px 4px #000;
         background-color: $bg-main-color;
         background-size: cover;
@@ -415,7 +426,7 @@ h1 {
 }
 .reset {
   position: absolute;
-  bottom: 2em;
+  top: 95vh;
   font-size: 16px;
   left: 1.5em;
   cursor: pointer;
@@ -461,14 +472,14 @@ h1 {
     background-color: #333;
   }
   form div {
-    margin-bottom: 0.7em;
+    margin-bottom: 0.5em;
     position: relative;
   }
   form input {
     border: none;
     outline: none;
     width: 100%;
-    height: 40px;
+    height: 38px;
     padding: 0.4em;
     color: #fff;
     background-color: rgb(27,27,27);
@@ -477,12 +488,12 @@ h1 {
     }
   }
  textarea {
-   border: none;
-  outline: none;
+    border: none;
+    outline: none;
     width: 100%;
     padding: 0.4em;
     color: #fff;
-   background-color: rgb(27,27,27);
+    background-color: rgb(27,27,27);
  }
   form .send-btn {
     border: none;
@@ -493,6 +504,7 @@ h1 {
     font-weight: 700;
     color: #fff;
     width: 100%;
+    margin-top: -1em;
     background: -webkit-linear-gradient(to right, #F37335, #FDC830, rgb(27,27,27) 50%);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #F37335, #FDC830, rgb(27,27,27) 50%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background-size: 200% 100%;
@@ -604,7 +616,8 @@ textarea:valid+label {
 }
 @media only screen and (max-width: 768px) {
 .nav-links {
-  padding-top: 4em;
+  padding-top: 6em;
+  padding-left: 0.5em;
   text-align: left;
     a {
       display: block;

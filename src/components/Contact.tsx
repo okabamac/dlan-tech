@@ -34,31 +34,58 @@ const Contact: React.FC = () => {
     ): Promise<void> => {
         e.preventDefault();
         const formDetails = {name: formFields.name, email: formFields.email, message: textMessage.message};
-        try {
-         const res =  await fetch("/", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: encode({ "form-name": "contact", ...formDetails }),
-            });
-         if (res) {
-             setSubmitResult({
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: encode({ "form-name": "contact", ...formDetails }),
+        })
+            .then(() => {
+                setSubmitResult({
                  success: true,
                  message: "Thanks for contacting us!",
              });
-             setFormFields({
+                setFormFields({
                  name: "",
                  email: "",
              });
-             setTextMessage({
+                setTextMessage({
                  message: "",
              });
-             }
-        } catch (err) {
-            setSubmitResult({
+                alert("Success!"); })
+            .catch((error) => {
+                setSubmitResult({
                 success: false,
                 message: "Oops! Something isn't right, please try again later",
             });
-        }
+                alert(error);
+            });
+
+        e.preventDefault();
+        // try {
+        //  const res =  await fetch("/", {
+        //         method: "POST",
+        //         headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        //         body: encode({ "form-name": "contact", ...formDetails }),
+        //     });
+        //  if (res) {
+        //      setSubmitResult({
+        //          success: true,
+        //          message: "Thanks for contacting us!",
+        //      });
+        //      setFormFields({
+        //          name: "",
+        //          email: "",
+        //      });
+        //      setTextMessage({
+        //          message: "",
+        //      });
+        //      }
+        // } catch (err) {
+        //     setSubmitResult({
+        //         success: false,
+        //         message: "Oops! Something isn't right, please try again later",
+        //     });
+        // }
         // if (this.validateForm()) {
         //     const submitSuccess: boolean = await this.submitForm();
         //     this.setState({ submitSuccess });
@@ -110,7 +137,7 @@ const Contact: React.FC = () => {
                                 <label htmlFor="email">Email</label>
                             </div>
                             <div>
-                            <textarea rows={10}
+                            <textarea rows={9}
                             name="message"
                             required
                             value={textMessage.message}
