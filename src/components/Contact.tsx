@@ -34,35 +34,36 @@ const Contact: React.FC = () => {
     ): Promise<void> => {
         e.preventDefault();
         const formDetails = {name: formFields.name, email: formFields.email, message: textMessage.message};
-        fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: encode({ "form-name": "contact", ...formDetails }),
-        })
-            .then(() => {
-                setSubmitResult({
+        try {
+         const res =  await fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: encode({ "form-name": "contact", ...formDetails }),
+            });
+         if (res) {
+             setSubmitResult({
                  success: true,
                  message: "Thanks for contacting us!",
              });
-                setFormFields({
+             setFormFields({
                  name: "",
                  email: "",
              });
-                setTextMessage({
+             setTextMessage({
                  message: "",
              });
-            })
-            .catch((error) => {
-                setSubmitResult({
+             }
+        } catch (err) {
+            setSubmitResult({
                 success: false,
                 message: "Oops! Something isn't right, please try again later",
             });
-            });
-        e.preventDefault();
+        }
         // if (this.validateForm()) {
         //     const submitSuccess: boolean = await this.submitForm();
         //     this.setState({ submitSuccess });
         // }
+        e.preventDefault();
     };
     const updateField = (e: React.ChangeEvent<HTMLInputElement>,
     ): void => {
