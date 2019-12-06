@@ -22,9 +22,6 @@ interface ContentState {
     title: string;
     text: any[];
 }
-interface BtnContent {
-    contentDisplay: string;
-}
 
 const Services: React.FC = () => {
     const divRef = useRef<HTMLDivElement>(null);
@@ -34,9 +31,6 @@ const Services: React.FC = () => {
         scrollX: 0,
     });
     const [expandService, setExpandService] = useState<ExpandService | undefined>(undefined);
-    const [btnContent, setBtnCOntent] = useState<BtnContent>({
-        contentDisplay: "",
-    });
     const navColor = expandService ? "white" : "black";
     const expandContent = (e: React.MouseEvent<HTMLButtonElement>, param: number, content: ContentState): void => {
     const bgImage = imgArray[param - 1];
@@ -82,7 +76,6 @@ const Services: React.FC = () => {
         if (divRef.current) {
             divRef.current.scrollLeft = scrollX - clientX + e.clientX;
             setState({ ...state, clientX: e.clientX, scrollX: scrollX + e.clientX - clientX });
-            // console.log(clientX, scrollX, divRef.current.scrollLeft);
      }
     };
     return (

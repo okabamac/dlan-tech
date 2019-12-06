@@ -1,5 +1,5 @@
 import { faCodepen, faFacebook, faGithub,  faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope, faMapMarker, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faEnvelope, faMapMarker, faPhone, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import Nav from "./Nav";
@@ -63,7 +63,7 @@ const Contact: React.FC = () => {
         //     const submitSuccess: boolean = await this.submitForm();
         //     this.setState({ submitSuccess });
         // }
-        e.preventDefault();
+        e.persist();
     };
     const updateField = (e: React.ChangeEvent<HTMLInputElement>,
     ): void => {
@@ -87,42 +87,46 @@ const Contact: React.FC = () => {
                 <div className="form-content">
                     <div className="form">
                     {submitResult ? <div className="contact-feedback" style={{color: "#fff"}}>
-                    <h3>{submitResult.message}</h3>
-                    </div> : ""}
-                        <form onSubmit={handleSubmit} >
-                            <div>
-                                <input
-                                    type="text"
-                                    value={formFields.name}
-                                    name="name"
-                                    required
-                                    onChange={updateField}
-                                />
-                                <label htmlFor="name">Name</label>
-                            </div>
-                            <div>
-                                <input
-                                    type="email"
-                                    value={formFields.email}
-                                    name="email"
-                                    required
-                                    onChange={updateField}
-                                />
-                                <label htmlFor="email">Email</label>
-                            </div>
-                            <div>
-                            <textarea rows={9}
-                            name="message"
-                            required
-                            value={textMessage.message}
-                            onChange={updateMessage}
-                            />
-                                <label htmlFor="message">Message</label>
-                            </div>
-                            <div>
-                        <button className="send-btn">Send</button>
-                            </div>
-                        </form>
+                    <h3>{submitResult.success ? (
+                                <span><FontAwesomeIcon icon={faCheck} /><br/>{submitResult.message}</span>
+                    ) : (
+                                    <span><FontAwesomeIcon icon={faThumbsDown} /><br/>{submitResult.message}</span>
+                    )}</h3>
+                        </div> : <form onSubmit={handleSubmit} >
+                                <div>
+                                    <input
+                                        type="text"
+                                        value={formFields.name}
+                                        name="name"
+                                        required
+                                        onChange={updateField}
+                                    />
+                                    <label htmlFor="name">Name</label>
+                                </div>
+                                <div>
+                                    <input
+                                        type="email"
+                                        value={formFields.email}
+                                        name="email"
+                                        required
+                                        onChange={updateField}
+                                    />
+                                    <label htmlFor="email">Email</label>
+                                </div>
+                                <div>
+                                    <textarea rows={9}
+                                        name="message"
+                                        required
+                                        value={textMessage.message}
+                                        onChange={updateMessage}
+                                    />
+                                    <label htmlFor="message">Message</label>
+                                </div>
+                                <div>
+                                    <button className="send-btn">Send</button>
+                                </div>
+                            </form>
+                        }
                     </div>
                     <div className="contact-details">
                         <div>
