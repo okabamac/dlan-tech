@@ -3,7 +3,8 @@ import Nav from "./Nav";
 
 const Home: React.FC = () => {
     return (
-        <header className="App-header">
+      <>
+        <header className="App-header" id="landing">
         <Nav background="black" color="white" display={false} showServices={true}/>
         <section className="landing-section">
           <h3>dlan <span className="rec-txt-yellow">Technologies</span></h3>
@@ -11,8 +12,47 @@ const Home: React.FC = () => {
           <p>We're a computer education company focused on <span className="smaller-rec-txt">equipping clients </span>
           with modern computer knowledge</p>
         </section>
-      <div className="arrow"></div>
+          <a href="#about-section"><div className="arrow down-arrow"></div></a>
       </header>
+        <section id="about-section">
+          <div className="about-content">
+            <div>
+              <h3>Mission Statement</h3>
+              <hr/>
+              <p>
+                         Small office, Big office customized trainings and exam certifications
+                         for individuals and organizations within Abuja and its environs.
+                          DCC is a small and fast-growing company with two offices in Abuja and one online market.
+                          It has a workforce of up to 10 people who work hard to improve the brand.
+              </p>
+            </div>
+            <div>
+              <h3>
+                Vision
+              </h3>
+              <hr />
+              <p>
+                          DCC desires to be recognized as a leader in the training industry
+                          worldwide whereby her customers develop skills,
+                          get certified, become professionals and can compete with other IT professionals globally.
+              </p>
+            </div>
+            <div>
+              <h3>Core Values</h3>
+              <hr />
+              <p>
+                <b>Customer-Centric:</b> Every employee focus is on the customers preference.
+                 From customized trainings, any training venue for corporate trainings,
+                choice of test certification exam and availability of these test exams are scheduled for the customer.
+                <b>Work Culture:</b> We recruit professionals who desire to impact lives through technology.
+                Excellence in service delivery is our culture.
+              </p>
+
+            </div>
+          </div>
+          <a href="#landing"><div className="arrow up-arrow"></div></a>
+        </section>
+      </>
     );
 };
 
