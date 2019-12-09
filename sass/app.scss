@@ -180,6 +180,7 @@ main {
   font-size: calc(5px + 2vmin);
   color: #fff;
   background-color: $bg-main-color;
+  padding-bottom: 2em;
 
   .about-content {
     position: relative;
@@ -188,8 +189,7 @@ main {
     grid-template-columns: repeat(auto-fill, minmax(400px,1fr));
     grid-gap: 1em;
     line-height: 1.5;
-    padding: 1em;
-    margin-bottom: 1em;
+    padding: 1em 1em 5em 1em;
     div {
       position: relative;
       -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
@@ -217,7 +217,7 @@ main {
 }
 .up-arrow {
   position: absolute;
-  bottom: 20px;
+  bottom: 40px;
   right: 3em;
   border-width: 0px 2px 2px 0px;
   transform: rotate(225deg);
@@ -710,7 +710,7 @@ textarea:valid+label {
   #about-section {
     .about-content {
       grid-template-columns: repeat(auto-fill, minmax(350px,1fr));
-      top: 17vh;
+      top: 13vh;
       grid-gap: 1.5em;
   }
   }
