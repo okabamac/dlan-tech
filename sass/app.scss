@@ -180,6 +180,7 @@ main {
   font-size: calc(5px + 2vmin);
   color: #fff;
   background-color: $bg-main-color;
+  margin: 0;
   padding-bottom: 2em;
 
   .about-content {
@@ -217,7 +218,7 @@ main {
 }
 .up-arrow {
   position: absolute;
-  bottom: 40px;
+  bottom: 20px;
   right: 3em;
   border-width: 0px 2px 2px 0px;
   transform: rotate(225deg);
