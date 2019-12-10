@@ -194,9 +194,9 @@ main {
     padding: 1em 1em 5em 1em;
     div {
       position: relative;
-      -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-      -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-      box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+      -webkit-box-shadow: 10px 10px 5px 0px rgba(27, 27, 27, 0.75);
+      -moz-box-shadow: 10px 10px 5px 0px rgba(27, 27, 27, 0.75);
+      box-shadow: 10px 10px 5px 0px rgba(29, 29, 29, 0.75);
       padding: 1em;
     }
   }
@@ -711,9 +711,12 @@ textarea:valid+label {
   }
   #about-section {
     .about-content {
-      grid-template-columns: repeat(auto-fill, minmax(350px,1fr));
+      grid-template-columns: repeat(auto-fill, minmax(340px,1fr));
       top: 13vh;
       grid-gap: 1.5em;
   }
   }
+  .up-arrow {
+  bottom: 10px;
+}
 }
