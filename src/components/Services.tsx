@@ -79,8 +79,7 @@ const Services: React.FC = () => {
      }
     };
     return (
-        <main style={{
-            backgroundColor: "#ffdc25"}}>
+        <main id="second-color">
             <Nav background="orange" color={navColor} display={true} showServices={false}/>
             {expandService ? <div className="my-services" style={{ backgroundImage: `url(${image})` }}>
                 <div id="overlayService">
@@ -101,8 +100,8 @@ const Services: React.FC = () => {
                     onMouseMove={onMouseMove}
                 >
                     <div className="slide">
-                        <h3>.01</h3>
-                        <h3>Web Development</h3>
+                        <h4>.01</h4>
+                        <h4>Web Development</h4>
                         <div className="slide-image" style={{ backgroundImage: `url(${webDev})` }}>
                             <div className="hover">
                             </div>
@@ -116,8 +115,8 @@ const Services: React.FC = () => {
                         </div>
                     </div>
                     <div className="slide">
-                        <h3>.02</h3>
-                        <h3>Hardware and Networking</h3>
+                        <h4>.02</h4>
+                        <h4>Hardware and Networking</h4>
                         <div className="slide-image" style={{ backgroundImage: `url(${hardware})` }} >
                             <div className="hover"></div>
                             <div className="service-content">
@@ -133,8 +132,8 @@ const Services: React.FC = () => {
                         </div>
                     </div>
                     <div className="slide">
-                        <h3>.03</h3>
-                        <h3>MS SQL Server</h3>
+                        <h4>.03</h4>
+                        <h4>MS SQL Server</h4>
                         <div className="slide-image" style={{ backgroundImage: `url(${sql})` }}>
                             <div className="hover"></div>
                             <div className="service-content">
@@ -147,8 +146,8 @@ const Services: React.FC = () => {
                         </div>
                     </div>
                     <div className="slide">
-                        <h3>.04</h3>
-                        <h3>MS Office Specialist</h3>
+                        <h4>.04</h4>
+                        <h4>MS Office Specialist</h4>
                         <div className="slide-image" style={{ backgroundImage: `url(${msOffice})` }}>
                             <div className="hover"></div>
                             <div className="service-content">

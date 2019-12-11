@@ -3,7 +3,7 @@ import Nav from "./Nav";
 
 const Home: React.FC = () => {
     return (
-      <>
+      <main id="main-color">
         <header className="App-header" id="landing">
         <Nav background="black" color="white" display={false} showServices={true}/>
         <section className="landing-section">
@@ -42,8 +42,8 @@ const Home: React.FC = () => {
               <hr />
               <p>
                 <b>Customer-Centric:</b> Every employee focus is on the customers preference.
-                 From customized trainings, any training venue for corporate trainings,
-                choice of test certification exam and availability of these test exams are scheduled for the customer.
+                 From customized trainings,
+                choice of test certification exam are scheduled for the customer.<br/>
                 <b>Work Culture:</b> We recruit professionals who desire to impact lives through technology.
                 Excellence in service delivery is our culture.
               </p>
@@ -52,7 +52,7 @@ const Home: React.FC = () => {
           </div>
           <a href="#landing"><div className="arrow up-arrow"></div></a>
         </section>
-      </>
+      </main>
     );
 };
 
