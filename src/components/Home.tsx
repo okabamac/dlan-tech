@@ -1,4 +1,7 @@
 import React from "react";
+import miniLg1 from "../images/feature-icon-01.svg";
+import miniLg2 from "../images/feature-icon-02.svg";
+import miniLg3 from "../images/feature-icon-03.svg";
 import Nav from "./Nav";
 
 const Home: React.FC = () => {
@@ -17,7 +20,7 @@ const Home: React.FC = () => {
         <section id="about-section">
           <div className="about-content">
             <div>
-              <h3>Mission Statement</h3>
+              <h3>Mission Statement <span><img src={miniLg1}/></span></h3>
               <hr/>
               <p>
                          Small office, Big office customized trainings and exam certifications
@@ -28,7 +31,7 @@ const Home: React.FC = () => {
             </div>
             <div>
               <h3>
-                Vision
+                Vision <span><img src={miniLg2} /></span>
               </h3>
               <hr />
               <p>
@@ -38,7 +41,7 @@ const Home: React.FC = () => {
               </p>
             </div>
             <div>
-              <h3>Core Values</h3>
+              <h3>Core Values <span><img src={miniLg3} /></span></h3>
               <hr />
               <p>
                 <b>Customer-Centric:</b> Every employee focus is on the customers preference.
