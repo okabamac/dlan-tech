@@ -139,7 +139,7 @@ const Contact: React.FC = () => {
                                          <a href="tel:+2348175833014" title="Give us a call">(+234) 08175833014</a>
                                         </span></p>
                                 <p><FontAwesomeIcon icon={faEnvelope} />
-                                    <span><a href="mailto:#" title="Send us an email">
+                                    <span><a href="mailto:dlan.officecafe@gmail.com" title="Send us an email">
                                     info@dlantechnologies.com</a></span></p>
                         </div>
                         <hr/>
