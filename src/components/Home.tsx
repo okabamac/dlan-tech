@@ -18,6 +18,7 @@ const Home: React.FC = () => {
           <a href="#about-section"><div className="arrow down-arrow"></div></a>
       </header>
         <section id="about-section">
+
           <div className="about-content">
             <div>
               <h3>Mission Statement <span><img src={miniLg1}/></span></h3>
@@ -25,7 +26,8 @@ const Home: React.FC = () => {
               <p>
                          Small office, Big office customized trainings and exam certifications
                          for individuals and organizations within Abuja and its environs.
-                          DCC is a small and fast-growing company with two offices in Abuja and one online market.
+                          Dlan Technologies is a small and fast-growing company with two
+                          offices in Abuja and one online market.
                           It has a workforce of up to 10 people who work hard to improve the brand.
               </p>
             </div>
@@ -35,7 +37,7 @@ const Home: React.FC = () => {
               </h3>
               <hr />
               <p>
-                          DCC desires to be recognized as a leader in the training industry
+                          Dlan Technologies desires to be recognized as a leader in the training industry
                           worldwide whereby her customers develop skills,
                           get certified, become professionals and can compete with other IT professionals globally.
               </p>
@@ -45,8 +47,7 @@ const Home: React.FC = () => {
               <hr />
               <p>
                 <b>Customer-Centric:</b> Every employee focus is on the customers preference.
-                 From customized trainings,
-                choice of test certification exam are scheduled for the customer.<br/>
+                 <br/>
                 <b>Work Culture:</b> We recruit professionals who desire to impact lives through technology.
                 Excellence in service delivery is our culture.
               </p>

@@ -144,16 +144,19 @@ const Contact: React.FC = () => {
                         </div>
                         <hr/>
                         <ul className="social-media-list">
-                            <li><a href="#" target="_blank" className="contact-icon">
+                            <li><a href="https://github.com/dlantechnologies" rel="noopener noreferrer"
+                            target="_blank" className="contact-icon">
                                 <FontAwesomeIcon icon={faGithub} /></a>
                             </li>
-                            <li><a href="#" target="_blank" className="contact-icon">
+                            <li><a href="https://twitter.com/dlan_technology" rel="noopener noreferrer"
+                            target="_blank" className="contact-icon">
                                 <FontAwesomeIcon icon={faTwitter} /></a>
                             </li>
-                            <li><a href="#" target="_blank" className="contact-icon">
+                            <li><a href="#" rel="noopener noreferrer" target="_blank" className="contact-icon">
                                 <FontAwesomeIcon icon={faFacebook} /></a>
                             </li>
-                            <li><a href="#" target="_blank" className="contact-icon">
+                            <li><a href="https://codepen.io/dlantechnologies" rel="noopener noreferrer"
+                            target="_blank" className="contact-icon">
                                 <FontAwesomeIcon icon={faCodepen} /></a>
                             </li>
                         </ul>

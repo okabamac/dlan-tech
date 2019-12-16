@@ -699,6 +699,7 @@ textarea:valid+label {
   opacity: 0;
   box-shadow: 0 0 0 1px #fff;
   transition: all .2s ease-in-out;
+  z-index: -1;
 }
 
 .social-media-list li:hover {
@@ -735,6 +736,9 @@ textarea:valid+label {
       margin: 0.5em;
       cursor: pointer;
       }
+  }
+  #content {
+    top: 27vh;
   }
   .form-content {
   grid-template-columns: 1fr;
