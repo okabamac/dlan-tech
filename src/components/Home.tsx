@@ -26,8 +26,6 @@ const Home: React.FC = () => {
               <p>
                          Small office, Big office customized trainings and exam certifications
                          for individuals and organizations within Abuja and its environs.
-                          Dlan Technologies is a small and fast-growing company with two
-                          offices in Abuja and one online market.
                           It has a workforce of up to 10 people who work hard to improve the brand.
               </p>
             </div>

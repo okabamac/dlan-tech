@@ -140,7 +140,7 @@ const Contact: React.FC = () => {
                                         </span></p>
                                 <p><FontAwesomeIcon icon={faEnvelope} />
                                     <span><a href="mailto:#" title="Send us an email">
-                                    info@dlan.tech</a></span></p>
+                                    info@dlantechnologies.com</a></span></p>
                         </div>
                         <hr/>
                         <ul className="social-media-list">
@@ -152,7 +152,7 @@ const Contact: React.FC = () => {
                             target="_blank" className="contact-icon">
                                 <FontAwesomeIcon icon={faTwitter} /></a>
                             </li>
-                            <li><a href="#" rel="noopener noreferrer" target="_blank" className="contact-icon">
+                            <li><a href="https://www.facebook.com/dlantechnologies" rel="noopener noreferrer" target="_blank" className="contact-icon">
                                 <FontAwesomeIcon icon={faFacebook} /></a>
                             </li>
                             <li><a href="https://codepen.io/dlantechnologies" rel="noopener noreferrer"
