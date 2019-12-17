@@ -1,5 +1,5 @@
 import { faCodepen, faFacebook, faGithub,  faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faCheck, faEnvelope, faMapMarker, faPhone, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faEnvelope, faMapMarker, faPaperPlane, faPhone, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import Nav from "./Nav";
@@ -24,6 +24,7 @@ const Contact: React.FC = () => {
         message: "",
     });
     const [submitResult, setSubmitResult ] = useState<SubmitResult | undefined >(undefined);
+    const [btnAnimation, setBtnAnimation] = useState(false);
     const encode = (data: { [x: string]: string | number | boolean; }) => {
         return Object.keys(data)
             .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -33,6 +34,7 @@ const Contact: React.FC = () => {
         e: React.FormEvent<HTMLFormElement>,
     ): Promise<void> => {
         e.preventDefault();
+        setBtnAnimation(true);
         const formDetails = {name: formFields.name, email: formFields.email, message: textMessage.message};
         try {
          const res =  await fetch("/", {
@@ -41,6 +43,7 @@ const Contact: React.FC = () => {
                 body: encode({ "form-name": "contact", ...formDetails }),
             });
          if (res) {
+             setBtnAnimation(false);
              setSubmitResult({
                  success: true,
                  message: "Thanks for contacting us!",
@@ -54,6 +57,7 @@ const Contact: React.FC = () => {
              });
              }
         } catch (err) {
+            setBtnAnimation(false);
             setSubmitResult({
                 success: false,
                 message: "Oops! Something isn't right, please try again later",
@@ -123,7 +127,8 @@ const Contact: React.FC = () => {
                                     <label htmlFor="message">Message</label>
                                 </div>
                                 <div>
-                                    <button className="send-btn">Send</button>
+                                    <button className="send-btn">{btnAnimation ? <FontAwesomeIcon icon={faPaperPlane} />
+                                    : "SEND"}</button>
                                 </div>
                             </form>
                         }
