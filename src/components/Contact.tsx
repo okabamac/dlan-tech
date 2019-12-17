@@ -1,5 +1,5 @@
 import { faCodepen, faFacebook, faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faCheck, faEnvelope, faMapMarker, faPaperPlane, faPhone, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faEnvelope, faMapMarker, faPaperPlane, faPhone, faWindowClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import Nav from "./Nav";
@@ -95,7 +95,7 @@ const Contact: React.FC = () => {
                             <h3>{submitResult.success ? (
                                 <span><FontAwesomeIcon icon={faCheck} /><br />{submitResult.message}</span>
                             ) : (
-                                    <span><FontAwesomeIcon icon={faThumbsDown} /><br />{submitResult.message}</span>
+                                    <span><FontAwesomeIcon icon={faWindowClose} /><br />{submitResult.message}</span>
                                 )}</h3>
                         </div> : <form onSubmit={handleSubmit} >
                                 <div>
