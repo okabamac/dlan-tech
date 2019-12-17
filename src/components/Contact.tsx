@@ -1,4 +1,4 @@
-import { faCodepen, faFacebook, faGithub,  faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faCodepen, faFacebook, faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faCheck, faEnvelope, faMapMarker, faPaperPlane, faPhone, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
@@ -23,8 +23,9 @@ const Contact: React.FC = () => {
     const [textMessage, setTextMessage] = useState<Message>({
         message: "",
     });
-    const [submitResult, setSubmitResult ] = useState<SubmitResult | undefined >(undefined);
+    const [submitResult, setSubmitResult] = useState<SubmitResult | undefined>(undefined);
     const [btnAnimation, setBtnAnimation] = useState(false);
+    const btnDiv = btnAnimation ? "addBg" : "";
     const encode = (data: { [x: string]: string | number | boolean; }) => {
         return Object.keys(data)
             .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -35,27 +36,27 @@ const Contact: React.FC = () => {
     ): Promise<void> => {
         e.preventDefault();
         setBtnAnimation(true);
-        const formDetails = {name: formFields.name, email: formFields.email, message: textMessage.message};
+        const formDetails = { name: formFields.name, email: formFields.email, message: textMessage.message };
         try {
-         const res =  await fetch("/", {
+            const res = await fetch("/", {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: encode({ "form-name": "contact", ...formDetails }),
             });
-         if (res) {
-             setBtnAnimation(false);
-             setSubmitResult({
-                 success: true,
-                 message: "Thanks for contacting us!",
-             });
-             setFormFields({
-                 name: "",
-                 email: "",
-             });
-             setTextMessage({
-                 message: "",
-             });
-             }
+            if (res) {
+                setBtnAnimation(false);
+                setSubmitResult({
+                    success: true,
+                    message: "Thanks for contacting us!",
+                });
+                setFormFields({
+                    name: "",
+                    email: "",
+                });
+                setTextMessage({
+                    message: "",
+                });
+            }
         } catch (err) {
             setBtnAnimation(false);
             setSubmitResult({
@@ -90,12 +91,12 @@ const Contact: React.FC = () => {
                 <h1>CONTACT</h1>
                 <div className="form-content">
                     <div className="form">
-                    {submitResult ? <div className="contact-feedback" style={{color: "#fff"}}>
-                    <h3>{submitResult.success ? (
-                                <span><FontAwesomeIcon icon={faCheck} /><br/>{submitResult.message}</span>
-                    ) : (
-                                    <span><FontAwesomeIcon icon={faThumbsDown} /><br/>{submitResult.message}</span>
-                    )}</h3>
+                        {submitResult ? <div className="contact-feedback" style={{ color: "#fff" }}>
+                            <h3>{submitResult.success ? (
+                                <span><FontAwesomeIcon icon={faCheck} /><br />{submitResult.message}</span>
+                            ) : (
+                                    <span><FontAwesomeIcon icon={faThumbsDown} /><br />{submitResult.message}</span>
+                                )}</h3>
                         </div> : <form onSubmit={handleSubmit} >
                                 <div>
                                     <input
@@ -126,9 +127,11 @@ const Contact: React.FC = () => {
                                     />
                                     <label htmlFor="message">Message</label>
                                 </div>
-                                <div>
-                                    <button className="send-btn">{btnAnimation ? <FontAwesomeIcon icon={faPaperPlane} />
-                                    : "SEND"}</button>
+                                <div className="btn-div" id={btnDiv}>
+                                    {btnAnimation ?
+                                        <FontAwesomeIcon icon={faPaperPlane} /> :
+                                        <button className="send-btn">SEND</button>
+                                    }
                                 </div>
                             </form>
                         }
@@ -137,35 +140,35 @@ const Contact: React.FC = () => {
                         <div>
                             <p className="contact-list"><FontAwesomeIcon icon={faMapMarker} />
                                 <span>
-                                219, Gado Nasko Road, Beside First Bank, Kubwa, Abuja</span></p>
-                                <p><FontAwesomeIcon icon={faPhone} />
-                                    <span>
+                                    219, Gado Nasko Road, Beside First Bank, Kubwa, Abuja</span></p>
+                            <p><FontAwesomeIcon icon={faPhone} />
+                                <span>
                                     <a href="tel:+2349059564447" title="Give us a call">(+234) 09059564447</a>, &nbsp;
                                          <a href="tel:+2348175833014" title="Give us a call">(+234) 08175833014</a>
-                                        </span></p>
-                                <p><FontAwesomeIcon icon={faEnvelope} />
-                                    <span><a href="mailto:dlan.officecafe@gmail.com" title="Send us an email">
+                                </span></p>
+                            <p><FontAwesomeIcon icon={faEnvelope} />
+                                <span><a href="mailto:dlan.officecafe@gmail.com" title="Send us an email">
                                     info@dlantechnologies.com</a></span></p>
                         </div>
-                        <hr/>
+                        <hr />
                         <ul className="social-media-list">
                             <li><a href="https://github.com/dlantechnologies" rel="noopener noreferrer"
-                            target="_blank" className="contact-icon">
+                                target="_blank" className="contact-icon">
                                 <FontAwesomeIcon icon={faGithub} /></a>
                             </li>
                             <li><a href="https://twitter.com/dlan_technology" rel="noopener noreferrer"
-                            target="_blank" className="contact-icon">
+                                target="_blank" className="contact-icon">
                                 <FontAwesomeIcon icon={faTwitter} /></a>
                             </li>
                             <li><a href="https://www.facebook.com/dlantechnologies" rel="noopener noreferrer" target="_blank" className="contact-icon">
                                 <FontAwesomeIcon icon={faFacebook} /></a>
                             </li>
                             <li><a href="https://codepen.io/dlantechnologies" rel="noopener noreferrer"
-                            target="_blank" className="contact-icon">
+                                target="_blank" className="contact-icon">
                                 <FontAwesomeIcon icon={faCodepen} /></a>
                             </li>
                         </ul>
-                        <hr/>
+                        <hr />
                         <div className="copyright">&copy; DLAN TECHNOLOGIES, 2019</div>
                     </div>
                 </div>
